@@ -8,31 +8,62 @@
 
 <style>
 
+/* smooth entrance */
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #e6e6e6;
+    overflow-x: hidden;
+
+    animation: fadeIn 1s ease;
+
     background:
         radial-gradient(circle at top,
-        rgba(70,255,170,0.20) 0%,
-        rgba(70,255,170,0.08) 25%,
-        rgba(13,13,13,1) 65%),
+        rgba(70,255,170,0.22) 0%,
+        rgba(70,255,170,0.08) 30%,
+        rgba(13,13,13,1) 70%),
         #0d0d0d;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* floating glow blobs */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: rgba(70,255,170,0.08);
+    filter: blur(100px);
+    z-index: -1;
+    animation: floatGlow 10s infinite alternate ease-in-out;
+}
+
+body::before { top: -100px; left: -100px; }
+body::after { bottom: -100px; right: -100px; background: rgba(72,240,255,0.08); }
+
+@keyframes floatGlow {
+    from { transform: translateY(0px); }
+    to { transform: translateY(30px); }
 }
 
 /* layout */
 .container {
     max-width: 950px;
     margin: 0 auto;
-    padding: 50px 20px;
+    padding: 60px 20px;
 }
 
 /* header */
 h1 {
-    font-size: 40px;
+    font-size: 44px;
     color: #48f0ff;
-    margin-bottom: 8px;
-    text-shadow: 0 0 10px rgba(72,240,255,.25);
+    text-shadow: 0 0 15px rgba(72,240,255,.25);
+    margin-bottom: 6px;
 }
 
 .tagline {
@@ -41,30 +72,30 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* section title */
+/* section titles */
 h2 {
     color: #6dffbe;
-    margin-top: 45px;
-    margin-bottom: 10px;
+    margin-top: 50px;
 }
 
-/* glass cards */
+/* glass card */
 .card {
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
-    padding: 20px;
-    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 22px;
+    backdrop-filter: blur(10px);
     transition: 0.25s ease;
+    margin-top: 12px;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(109,255,190,0.25);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: translateY(-6px);
+    border-color: rgba(109,255,190,0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-/* underline highlight text (FIXED VERSION) */
+/* underline system */
 b {
     color: #6dffbe;
     text-decoration: underline;
@@ -73,7 +104,7 @@ b {
     text-underline-offset: 2px;
 }
 
-/* links (FIXED VERSION) */
+/* links */
 a {
     color: #73b7ff;
     text-decoration: underline;
@@ -85,47 +116,53 @@ a {
 
 a:hover {
     color: #b7dcff;
-    text-decoration-color: rgba(183,220,255,.9);
+    text-decoration-color: rgba(183,220,255,.95);
 }
 
-/* list */
-ul {
-    padding-left: 18px;
-}
-
+/* list animation */
 li {
     margin: 10px 0;
     transition: 0.2s ease;
 }
 
 li:hover {
-    transform: translateX(5px);
+    transform: translateX(6px);
+}
+
+/* hero game card */
+.hero {
+    border: 1px solid rgba(109,255,190,0.25);
+    background: linear-gradient(
+        135deg,
+        rgba(70,255,170,0.08),
+        rgba(72,240,255,0.05)
+    );
 }
 
 /* button */
 .button {
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 16px;
-    border-radius: 10px;
+    margin-top: 12px;
+    padding: 12px 18px;
+    border-radius: 12px;
     background: linear-gradient(90deg, #48f0ff, #6dffbe);
     color: #0d0d0d;
     font-weight: bold;
     text-decoration: none;
-    box-shadow: 0 0 15px rgba(72,240,255,0.15);
+    box-shadow: 0 0 18px rgba(72,240,255,0.15);
     transition: 0.2s ease;
 }
 
 .button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(109,255,190,0.25);
+    transform: scale(1.07);
+    box-shadow: 0 0 30px rgba(109,255,190,0.3);
 }
 
 /* footer */
 footer {
     text-align: center;
     color: #777;
-    margin-top: 60px;
+    margin-top: 70px;
     font-size: 13px;
 }
 
@@ -141,27 +178,34 @@ footer {
     <div class="tagline">Born in chaos. Built with bugs.</div>
 
     <div class="card">
-        Welcome to <b>The Bugged Studio</b>, a solo indie game development
-        studio created by <b>Nitin</b>. I build experimental games, break things,
-        fix them again, and learn every step of the way.
+        Welcome to <b>The Bugged Studio</b>, a solo indie game development studio created by <b>Nitin</b>.  
+        I build experimental games, break physics, fix bugs, and repeat the cycle until something fun happens.
     </div>
 
     <h2>Featured Game</h2>
-    <div class="card">
+    <div class="card hero">
         <h3>Rooftop Runner</h3>
-        A fast-paced movement platformer built in pure experimentation.
+        A fast-paced movement platformer built through pure experimentation and chaos engineering.
         <br><br>
         <a class="button" href="https://thebuggedstd.itch.io/" target="_blank">
             Play Now
         </a>
     </div>
 
-    <h2>More Games</h2>
+    <h2>Dev Log</h2>
+    <div class="card">
+        • Added wall-jump physics experiments<br>
+        • Fixed gravity bug that made players fly into space<br>
+        • AI enemy now slightly less confused 😄<br>
+        • Next: multiplayer chaos prototype
+    </div>
+
+    <h2>More Projects</h2>
     <div class="card">
         <ul>
-            <li>More experimental projects coming soon...</li>
-            <li>Physics-based prototypes</li>
-            <li>Random chaos builds 😄</li>
+            <li>Physics sandbox experiments</li>
+            <li>Random gameplay prototypes</li>
+            <li>“What happens if I break this?” builds</li>
         </ul>
     </div>
 
@@ -179,89 +223,6 @@ footer {
     </footer>
 
 </div>
-
-</body>
-
-</html>            color: #6dffbe;
-            display: inline;
-            border-bottom: 3px solid rgba(109,255,190,.6);
-            padding-bottom: 1px;
-        }
-
-        a {
-            color: #73b7ff;
-            text-decoration: none;
-            display: inline;
-            border-bottom: 3px solid rgba(115,183,255,.6);
-            padding-bottom: 1px;
-        }
-
-        a:hover {
-            color: #b7dcff;
-            border-bottom-color: rgba(183,220,255,.95);
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #2f2f2f;
-            margin: 28px 0;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        footer {
-            color: #888;
-            margin-top: 40px;
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-    <h1>The Bugged Studio</h1>
-
-    <p><b>Born in chaos. Built with bugs.</b></p>
-
-    <hr>
-
-    <h2>About</h2>
-
-    <p>
-        Welcome to <b>The Bugged Studio</b>, a solo indie game development
-        studio created by <b>Nitin</b>.
-        This is where I share my games, experiments and future projects.
-        My goal is to create memorable gaming experiences while constantly
-        learning and improving as a developer.
-    </p>
-
-    <hr>
-
-    <h2>Games</h2>
-
-    <ul>
-        <li>Rooftop Runner</li>
-        <li>More games coming soon...</li>
-    </ul>
-
-    <hr>
-
-    <h2>Links</h2>
-
-    <ul>
-        <li><a href="https://thebuggedstd.itch.io/" target="_blank">itch.io</a></li>
-        <li><a href="https://github.com/THEBUGGEDSTD" target="_blank">GitHub</a></li>
-        <li><a href="https://instagram.com/thebuggedstudio" target="_blank">Instagram</a></li>
-    </ul>
-
-    <hr>
-
-    <footer>
-        © 2026 The Bugged Studio
-    </footer>
 
 </body>
 
