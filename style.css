@@ -155,3 +155,22 @@ footer {
     margin-top: 70px;
     font-size: 13px;
 }
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+nav a {
+    color: #e6e6e6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+nav a:hover {
+    color:#6dffbe;
+}    
