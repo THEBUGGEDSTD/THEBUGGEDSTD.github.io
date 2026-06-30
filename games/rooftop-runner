@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png?v=2">
+    <link rel="apple-touch-icon" href="/favicon.png?v=2">
+    <meta name="theme-color" content="#0d0d0d">   
+    <link rel="stylesheet" href="../../style.css">
+    <title>Rooftop Runner - The Bugged Studio</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../../index.html">Home</a>
+        <a href="../../games.html">Games</a>
+        <a href="../../about.html">About</a>
+    </nav>
+    
+    <main class="container">
+        <header style="text-align: center; margin-bottom: 40px;">
+            <h1>Rooftop Runner</h1>
+            <div class="tagline">A fast-paced rooftop platformer where every jump matters.</div>
+        </header>
+
+        <div class="card hero" style="text-align: center; padding: 40px 22px;"> 
+            <h2>Download the Game</h2>
+            <p style="max-width: 600px; margin: 0 auto 24px auto; line-height: 1.6;"> 
+                Experience the chaos of the latest build directly on itch.io.
+            </p>
+
+            <a class="button" href="https://the-bugged-studio.itch.io/rooftop-runner" target="_blank" rel="noopener" style="font-size: 18px; padding: 14px 28px;">
+                Download on itch.io
+            </a>
+            
+            <p style="margin-top: 20px; font-size: 14px; color: #6dffbe;">
+                <b>Status:</b> In Development
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Features</h3>
+            <ul>
+                <li>Run on walls.</li>
+                <li>Clear the level as fast as possible.</li>
+                <li>Reach the end as soon as possible.</li>
+            </ul>
+        </div>
+
+        <footer>
+            &copy; 2026 The Bugged Studio
+        </footer>
+    </main>
+</body>
+
+</html>
